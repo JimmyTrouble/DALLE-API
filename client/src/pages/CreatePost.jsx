@@ -14,6 +14,7 @@ const CreatePost = () => {
   });
   const [generateingImg, setgenerateingImg] = useState(false);
   const [loading, setloading] = useState(false);
+  const [userInput, setUserInput] = useState({});
 
   const generateImg = () => {};
   const handleSubmit = () => {};
@@ -50,6 +51,7 @@ const CreatePost = () => {
             name="prompt"
             placeholder="an armchair in the shape of an avocado"
             value={form.prompt}
+            //create a handlePrompt chnage perhaps to set a state, effectivley make this value={form.prompt} dynmaic
             handleChange={handleChange}
             isSurpriseMe
             handleSurpiseMe={handleSurpiseMe}
@@ -58,7 +60,7 @@ const CreatePost = () => {
             {form.photo ? (
               <img
                 src={form.photo}
-                alt={fprm.prompt}
+                alt={form.prompt}
                 className="w-full h-full object-contain"
               />
             ) : (
