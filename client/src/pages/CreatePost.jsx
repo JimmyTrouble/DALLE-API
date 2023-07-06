@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { preview } from "../assets";
@@ -14,18 +14,43 @@ const CreatePost = () => {
   });
   const [generateingImg, setgenerateingImg] = useState(false);
   const [loading, setloading] = useState(false);
-  const [userInput, setUserInput] = useState({});
 
-  const generateImg = () => {};
+  const generateImg = async () => {
+    if (form.prompt)
+      try {
+        setgenerateingImg(true);
+        const response = await fetch("http://localhost:8080/api/v1/dalle", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ prompt: form.prompt }),
+        });
+
+        const data = await response.json();
+
+        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+      } catch (error) {
+        alert(error);
+      } finally {
+        setgenerateingImg(false);
+      }
+    else {
+      alert("please enter a prompt");
+    }
+  };
   const handleSubmit = () => {};
   const handleChange = (e) => {
+    console.log(e.target.name);
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   const handleSurpiseMe = () => {
     const randomPrompt = getRandomPrompt(form.prompt);
     setForm({ ...form, prompt: randomPrompt });
-    console.log(form.prompt);
   };
+  useEffect(() => {
+    console.log(form);
+  }, [form]);
 
   return (
     <section className="max-w-7xl mx-auto">
@@ -42,16 +67,15 @@ const CreatePost = () => {
             type="text"
             name="name"
             placeholder="Jphn Doe"
-            value={form.value}
+            value={form.name}
             handleChange={handleChange}
           />
           <FormFeild
-            labelName="prompt"
+            labelName="Prompt"
             type="text"
             name="prompt"
-            placeholder="an armchair in the shape of an avocado"
+            placeholder="An Impressionist oil painting of sunflowers in a purple vase…"
             value={form.prompt}
-            //create a handlePrompt chnage perhaps to set a state, effectivley make this value={form.prompt} dynmaic
             handleChange={handleChange}
             isSurpriseMe
             handleSurpiseMe={handleSurpiseMe}
@@ -81,7 +105,7 @@ const CreatePost = () => {
         <div className="mt-5 flex gap-5">
           <button
             type="button"
-            onClick={generateingImg}
+            onClick={generateImg}
             className="text-white bg-green-700 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
             {generateingImg ? "generating" : "generate"}
           </button>

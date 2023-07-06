@@ -31,6 +31,7 @@ const FormFeild = ({
         type={type}
         id={name}
         placeholder={placeholder}
+        name={name}
         value={value}
         onChange={handleChange}
         required
