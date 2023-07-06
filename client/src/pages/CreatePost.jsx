@@ -106,7 +106,7 @@ const CreatePost = () => {
           <button
             type="button"
             onClick={generateImg}
-            className="text-white bg-green-700 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+            className="text-white bg-green-700 font-medium rounded-lg text-sm w-full  sm:w-64 px-5 py-2.5 text-center">
             {generateingImg ? "generating" : "generate"}
           </button>
         </div>
@@ -115,7 +115,7 @@ const CreatePost = () => {
           <button
             type="submit"
             className="mt-3 text-white bg-[#6469ff]
-          font-medium rounded-md text-sm w-full sm:w-auto px-5 py2.5 text-center">
+            font-medium rounded-lg text-sm w-full sm:w-64 px-5 py-2.5 text-center">
             {loading ? "Sharing" : "Share with the community"}
           </button>
         </div>

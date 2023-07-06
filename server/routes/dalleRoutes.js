@@ -13,7 +13,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 router.route("/ ").get((req, res) => {
-  res.semd("hello from dalle");
+  res.send("hello from dalle");
 });
 
 router.route("/").post(async (req, res) => {
@@ -27,6 +27,7 @@ router.route("/").post(async (req, res) => {
     });
     const image = aiResponse.data.data[0].b64_json;
     res.status(200).json({ photo: image });
+    console.log(image);
   } catch (error) {
     console.log(error);
     res.status(500);
