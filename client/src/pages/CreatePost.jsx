@@ -69,7 +69,7 @@ const CreatePost = () => {
             labelName="your name"
             type="text"
             name="name"
-            placeholder="Jphn Doe"
+            placeholder="Liam Turner"
             value={form.name}
             handleChange={handleChange}
           />
@@ -77,7 +77,7 @@ const CreatePost = () => {
             labelName="Prompt"
             type="text"
             name="prompt"
-            placeholder="An Impressionist oil painting of sunflowers in a purple vase…"
+            placeholder="A guy called Liam Turner building fullstack apps"
             value={form.prompt}
             handleChange={handleChange}
             isSurpriseMe
