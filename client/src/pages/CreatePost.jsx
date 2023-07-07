@@ -85,11 +85,13 @@ const CreatePost = () => {
           />
           <div className="relative bg-gray-50 border border-gray-300 text-gray-900  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 h-64 flex justify-center items-center">
             {form.photo ? (
-              <img
-                src={form.photo}
-                alt={form.prompt}
-                className="w-full h-full object-contain"
-              />
+              <div>
+                <img
+                  src={form.photo}
+                  alt={form.prompt}
+                  className="w-full h-full object-contain"
+                />
+              </div>
             ) : (
               <img
                 src={preview}
@@ -101,6 +103,15 @@ const CreatePost = () => {
             {generateingImg && (
               <div className="absolute inset-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
                 <Loader />
+              </div>
+            )}
+          </div>
+          <div>
+            {form.photo && (
+              <div>
+                <p1>Author: {form.name}</p1>
+                <br></br>
+                <p1>Prompt: {form.prompt}</p1>
               </div>
             )}
           </div>
