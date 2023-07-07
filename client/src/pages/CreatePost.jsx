@@ -110,15 +110,7 @@ const CreatePost = () => {
             {generateingImg ? "generating" : "generate"}
           </button>
         </div>
-        <div className="mt-10">
-          <p className="mt-2 text-[#666e75] text-[14px]">Share with everyone</p>
-          <button
-            type="submit"
-            className="mt-3 text-white bg-[#6469ff]
-            font-medium rounded-lg text-sm w-full sm:w-64 px-5 py-2.5 text-center">
-            {loading ? "Sharing" : "Share with the community"}
-          </button>
-        </div>
+        <div className="mt-10"></div>
       </form>
     </section>
   );

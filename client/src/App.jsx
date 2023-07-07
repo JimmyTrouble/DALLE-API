@@ -11,21 +11,13 @@ const App = () => {
           <img
             src={logo}
             alt="logo"
-            className="w-28 hover:w-32 object-contain"
+            className="w-64 hover:w-32 object-contain"
           />
-        </Link>
-
-        <Link
-          to="/create-post"
-          className="font-inter font-medium bg-[#7176ff] hover:bg-[#555bf8]  text-white px-4 py-2
-          rounded-md">
-          create
         </Link>
       </header>
       <main className="sm:p-8 px-4 py-8 w-full bg-slate-100 min-h-[calc(100vh-73px)]">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/" element={<CreatePost />} />
         </Routes>
       </main>
     </BrowserRouter>
